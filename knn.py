@@ -7,31 +7,34 @@ Created on Fri Apr 14 18:17:10 2017
 import sample
 import random
 import util
+import knn_helper
     
 def knn(p, data, k):
-    # Calculating the distances b/w p & every pt. in data
-    distances = {}
-    for d in data:
-        if d.distance(p) not in distances.keys():
-            distances[ d.distance(p) ] = [ d ]
-        else:
-            distances[ d.distance(p) ].append(d)
-
-    # Sorting the k nearest neighbours
-    result = []        
-    for key in sorted(distances.keys()):
-        result.extend( distances[key] )
-
-    k_nearest_neighbours = result[:k]
-
-    # Assigning a label to the new point based on the k neighbours
-    label_votes = { l:0 for l in util.LABELS }
-    for x in k_nearest_neighbours:
-        label_votes[ x.getLabel() ] += 1
-    max_label = sorted(label_votes, key = label_votes.get, reverse = True)[0]
+    """ Compute the distance between p to every sample in data,
+        set p's label to the label of the maximum of samples 
+        within the k nearest neighbors
+    """
     
-    print(p)
+    """ Steps:
+        1. Iterate through samples in data and store the 
+           distances in the dictionary "distance", key is the 
+           distance, value is the sample.
+        2. Creat a sorted list of samples according to ascending
+           order of the distances.
+        3. In the dictioary "label_votes", stores number of votes
+           in each label among the top-k nearest samples
+        4. Assign p the most popular label
+    """
+    distances = {}
+    result = []
+    max_label = util.LABELS[0]
+    
     p.setLabel(max_label)
+    # the above lines are some supporting data structuers that
+    # can be helpful.
+    # replace knn_helper.knn(p, data, k) with your own logic
+    print(p)
+    knn_helper.knn(p, data, k)
     print(p)
     
 if __name__ == "__main__":
