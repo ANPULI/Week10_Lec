@@ -48,6 +48,7 @@ if __name__ == "__main__":
     d_x = [d.getFeatures()[0] for d in train_data]
     d_y = [d.getFeatures()[1] for d in train_data]
     plt.scatter(d_x, d_y)
+    plt.show()
     
     num_iter = 10
     steps = 0

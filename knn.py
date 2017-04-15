@@ -17,7 +17,7 @@ def knn(p, data, k):
     
     """ Steps:
         1. Iterate through samples in data and store the 
-           distances in the dictionary "distance", key is the 
+           distance from p in the dictionary "distance"; key is the 
            distance, value is the sample.
         2. Creat a sorted list of samples according to ascending
            order of the distances.
@@ -25,13 +25,10 @@ def knn(p, data, k):
            in each label among the top-k nearest samples
         4. Assign p the most popular label
     """
-    distances = {}
-    result = []
+
     max_label = util.LABELS[0]
-    
     p.setLabel(max_label)
-    # the above lines are some supporting data structuers that
-    # can be helpful.
+    # above forces a fixed label: remove them
     # replace knn_helper.knn(p, data, k) with your own logic
     print(p)
     knn_helper.knn(p, data, k)

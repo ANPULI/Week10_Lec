@@ -14,7 +14,7 @@ Created on Thu Oct 29 16:36:11 2015
 
 class Sample(object):
     
-    def __init__(self, name, features, label = None):
+    def __init__(self, name, features, label=None):
         #Assumes features is an array of numbers
         self.name = name
         self.features = features
